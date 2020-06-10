@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: demoapp
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - app-gateway
+  http:
+    - route:
+      - destination:
+          host: flaskapp.prod.svc.cluster.local 
+        weight: 50
+      - destination:
+          host: flaskapp.stage.svc.cluster.local
+        weight: 50

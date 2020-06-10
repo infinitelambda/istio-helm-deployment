@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ .Values.deployment.name }}-{{ .Values.deployment.tag }}
+  labels:
+     app: {{ .Values.deployment.name }}
+     version: {{ .Values.deployment.tag }}
+spec:
+  containers:
+  - name: {{ .Values.deployment.name }}{{ .Values.deployment.tag }}
+    image: {{ .Values.deployment.image}}:{{ .Values.deployment.tag }}
